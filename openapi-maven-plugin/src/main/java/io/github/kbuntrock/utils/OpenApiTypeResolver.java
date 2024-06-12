@@ -286,7 +286,7 @@ public enum OpenApiTypeResolver {
 
 	private DataObject unwrapDataObject(final DataObject dataObject, final Map<Class<?>, UnwrappingEntry> unwrappingMap) {
 		for(final Entry<Class<?>, UnwrappingEntry> entry : unwrappingMap.entrySet()) {
-			if(entry.getKey().isAssignableFrom(dataObject.getJavaClass())) {
+			if(entry.getKey().isAssignableFrom(dataObject.getJavaClass()) && dataObject.getGenericNameToTypeMap() != null) {
 				final DataObject unwrapped = new DataObject(
 					dataObject.getGenericNameToTypeMap().get(entry.getValue().getTypeName()));
 
