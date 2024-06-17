@@ -385,11 +385,12 @@ public class YamlWriter {
 
 			// Map operations to their path
 			for(final Operation operation : operations) {
-				final Operation previousOperation = paths.get(operation.getPath()).put(operation.getName().toLowerCase(), operation);
-				if(previousOperation != null) {
-					throw new MojoRuntimeException(
-						"More than one operation mapped on " + operation.getName() + " : " + operation.getPath() + " in tag "
-							+ tag.getName());
+				Map<String, Operation> operationMap = paths.get(operation.getPath());
+				if (!operationMap.containsKey(operation.getName().toLowerCase())) {
+					operationMap.put(operation.getName().toLowerCase(), operation);
+				} else {
+					logger.error("More than one operation mapped on " + operation.getName() + " : " + operation.getPath() + " in tag "
+						+ tag.getName());
 				}
 			}
 

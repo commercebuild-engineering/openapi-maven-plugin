@@ -92,6 +92,10 @@ public class Schema {
 
 		final DataObject dataObject = OpenApiTypeResolver.INSTANCE.unwrapDataObject(wrappedDataObject, UnwrappingType.SCHEMA);
 
+		if(dataObject == null) {
+			return;
+		}
+
 		this.mainReference = mainReference;
 
 		// Javadoc handling

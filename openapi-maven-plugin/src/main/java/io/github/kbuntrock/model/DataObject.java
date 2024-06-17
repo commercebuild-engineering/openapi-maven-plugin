@@ -130,7 +130,7 @@ public class DataObject {
 						pt.getActualTypeArguments()[i]);
 				}
 
-				if(Collection.class.isAssignableFrom(javaClass) && pt.getActualTypeArguments() != null) {
+				if(Collection.class.isAssignableFrom(javaClass) && pt.getActualTypeArguments() != null && pt.getActualTypeArguments().length > 0) {
 					arrayItemDataObject = new DataObject(pt.getActualTypeArguments()[0]);
 				} else if(Map.class.isAssignableFrom(javaClass)) {
 					mapKeyValueDataObjects[0] = new DataObject(pt.getActualTypeArguments()[0]);

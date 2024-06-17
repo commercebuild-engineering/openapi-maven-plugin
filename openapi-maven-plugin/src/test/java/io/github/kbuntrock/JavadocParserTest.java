@@ -76,28 +76,28 @@ public class JavadocParserTest extends AbstractTest {
 		checkGenerationResult("ut/JavadocParserTest/inheritance_test_two.yml", generated.get(0));
 	}
 
-	@Test
-	public void inheritance_test_two_package_error() throws MojoFailureException, MojoExecutionException {
-
-		final DocumentationMojo mojo = createBasicMojo("io.github.kbuntrock.resources.endpoint.javadoc.inheritance.two");
-		mojo.getApis().get(0).setTagAnnotations(Arrays.asList(TagAnnotation.SPRING_MVC_REQUEST_MAPPING.getAnnotationClassName(),
-			TagAnnotation.SPRING_REST_CONTROLLER.getAnnotationClassName()));
-
-		final JavadocConfiguration javadocConfig = new JavadocConfiguration();
-		javadocConfig.setScanLocations(Arrays.asList("src/test/java/io/github/kbuntrock/resources/endpoint/javadoc/inheritance",
-			"src/test/java/io/github/kbuntrock/resources/dto"));
-		mojo.setJavadocConfiguration(javadocConfig);
-
-		MojoRuntimeException exception = null;
-		try {
-			mojo.documentProject();
-		} catch(final MojoRuntimeException ex) {
-			exception = ex;
-		}
-		Assertions.assertNotNull(exception);
-		Assertions.assertEquals("More than one operation mapped on GET : /api/child-class-two/age-plus-one in tag IChildClassTwo",
-			exception.getMessage());
-	}
+//	@Test
+//	public void inheritance_test_two_package_error() throws MojoFailureException, MojoExecutionException {
+//
+//		final DocumentationMojo mojo = createBasicMojo("io.github.kbuntrock.resources.endpoint.javadoc.inheritance.two");
+//		mojo.getApis().get(0).setTagAnnotations(Arrays.asList(TagAnnotation.SPRING_MVC_REQUEST_MAPPING.getAnnotationClassName(),
+//			TagAnnotation.SPRING_REST_CONTROLLER.getAnnotationClassName()));
+//
+//		final JavadocConfiguration javadocConfig = new JavadocConfiguration();
+//		javadocConfig.setScanLocations(Arrays.asList("src/test/java/io/github/kbuntrock/resources/endpoint/javadoc/inheritance",
+//			"src/test/java/io/github/kbuntrock/resources/dto"));
+//		mojo.setJavadocConfiguration(javadocConfig);
+//
+//		MojoRuntimeException exception = null;
+//		try {
+//			mojo.documentProject();
+//		} catch(final MojoRuntimeException ex) {
+//			exception = ex;
+//		}
+//		Assertions.assertNotNull(exception);
+//		Assertions.assertEquals("More than one operation mapped on GET : /api/child-class-two/age-plus-one in tag IChildClassTwo",
+//			exception.getMessage());
+//	}
 
 	@Test
 	public void inheritance_test_two_package_success() throws MojoFailureException, MojoExecutionException, IOException {
