@@ -103,7 +103,7 @@ public class SpringMvcReader extends AstractLibraryReader {
 	}
 
 	private boolean excludedByReturnType(final Method method) {
-		return "org.springframework.web.servlet.ModelAndView".equals(method.getReturnType().getCanonicalName());
+		return false; // "org.springframework.web.servlet.ModelAndView".equals(method.getReturnType().getCanonicalName());
 	}
 
 	/**
